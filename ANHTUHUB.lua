@@ -249,7 +249,7 @@ _G.InvisStealAngle = Config.InvisStealAngle
 _G.SinkSliderValue = Config.SinkSliderValue
 _G.AutoRecoverLagback = Config.AutoRecoverLagback
 _G.AutoInvisDuringSteal = Config.AutoInvisDuringSteal
-    _G.INVISIBLE_STEAL_KEY = Enum.KeyCode[Config.InvisToggleKey] or Enum.KeyCode.I
+    _G.INVISIBLE_STEAL_KEY = Enum.KeyCode.I
 _G.invisibleStealEnabled = false
 _G.RecoveryInProgress = false
 
