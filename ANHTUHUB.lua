@@ -4020,7 +4020,7 @@ end)
 UserInputService.InputBegan:Connect(function(input, processed)
     if processed then return end
     
-    local tpKey = Enum.KeyCode[Config.TpSettings.TpKey] or Enum.KeyCode.T
+   local tpKey = Enum.KeyCode.I
     local cloneKey = Enum.KeyCode[Config.TpSettings.CloneKey] or Enum.KeyCode.V
 
     if input.KeyCode == tpKey then
