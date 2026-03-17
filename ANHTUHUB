@@ -7972,3 +7972,46 @@ task.spawn(function()
         idBox.Text = ""
     end)
 end)
+task.spawn(function()
+
+repeat task.wait() until game:IsLoaded()
+local lp = game:GetService("Players").LocalPlayer
+
+local hooked = false
+lp:SetAttribute("Stealing", lp:GetAttribute("Stealing") or false)
+
+local function send(packet)
+    if packet.PacketId == 0x1B then
+        local b = packet.AsBuffer
+        buffer.writeu32(b,1,0xFFFFFFFF)
+        buffer.writeu32(b,5,0xFFFFFFFF)
+        buffer.writeu32(b,9,0xFFFFFFFF)
+        packet:SetData(b)
+    end
+end
+
+local function recv(packet)
+    if packet.PacketId == 0x1B or packet.PacketId == 0x86 then
+        packet:Drop()
+    end
+end
+
+local function update()
+    if lp:GetAttribute("Stealing") and not hooked then
+        if raknet then
+            raknet.add_send_hook(send)
+            raknet.add_recv_hook(recv)
+            hooked = true
+        end
+    elseif hooked then
+        if raknet then
+            raknet.remove_send_hook(send)
+            raknet.remove_recv_hook(recv)
+            hooked = false
+        end
+    end
+end
+
+lp:GetAttributeChangedSignal("Stealing"):Connect(update)
+
+end)
