@@ -6865,7 +6865,7 @@ title.Size = UDim2.new(0, 180, 1, 0)
 title.Position = UDim2.new(0, 28 * SCALE, 0.5, 0)
 title.AnchorPoint = Vector2.new(0, 0.5)
 title.BackgroundTransparency = 1
-title.Text = "DUYANHHUB"
+title.Text = "ANHTUHUB"
 title.Font = Enum.Font.GothamBlack
 title.TextSize = 20 * SCALE
 title.TextColor3 = HTheme.White
@@ -6956,9 +6956,9 @@ stats.ZIndex = 11
 
     local title = Instance.new("TextLabel", topBar)
     if privateBuild then
-        title.Text = "DUYANHHUB PRIVATE"
+        title.Text = "ANHTUHUB PRIVATE"
     else
-        title.Text = "DUYANHHUB"
+        title.Text = "ANHTUHUB"
     end
     title.Font = Enum.Font.GothamBlack
     title.TextSize = 20*SCALE
