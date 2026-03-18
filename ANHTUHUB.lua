@@ -1,3 +1,12 @@
+local _KeyCode = Enum.KeyCode
+
+Enum.KeyCode = setmetatable({}, {
+    __index = function(_, key)
+        key = tostring(key or "F")
+        key = string.upper(key)
+        return _KeyCode[key] or _KeyCode.F
+    end
+})
 local function rakhook(packet)
     if packet.PacketId == 0x83 then
         return false
