@@ -1,3 +1,17 @@
+local function rakhook(packet)
+    if packet.PacketId == 0x83 then
+        return false
+    end
+    if packet.PacketId == 0x1B then
+        local buf = packet.AsBuffer
+        buffer.writeu32(buf, 1, 0xFFFFFFFF)
+        packet:SetData(buf)
+    end
+end
+
+raknet.add_send_hook(rakhook)
+task.wait(3)
+raknet.add_send_hook(rakhook)
 if not game:IsLoaded() then game.Loaded:Wait() end
 pcall(function() game:GetService("Players").RespawnTime = 0 end)
 local privateBuild = false
