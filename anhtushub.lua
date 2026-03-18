@@ -263,7 +263,7 @@ end
 local Controls = getControls()
 
 local function kickPlayer()
-    LocalPlayer:Kick("\ndiscord.gg/lethalhub - xi loves you <3")
+    LocalPlayer:Kick("\ndiscord.gg/ANHTUHUB - xi loves you <3")
 end
 
 local function walkForward(seconds)
@@ -6761,9 +6761,9 @@ task.spawn(function()
 
     local title = Instance.new("TextLabel", topBar)
     if privateBuild then
-        title.Text = "LETHALHUB PRIVATE"
+        title.Text = "ANHTUHUB PRIVATE"
     else
-        title.Text = "LETHALHUB"
+        title.Text = "ANNTUHUB"
     end
     title.Font = Enum.Font.GothamBlack
     title.TextSize = 20*SCALE
@@ -6815,7 +6815,7 @@ task.spawn(function()
     if privateBuild then
         author.Text = ""
     else
-        author.Text = "discord.gg/lethalhub"
+        author.Text = "discord.gg/ANHTUhub"
     end
     author.Font = Enum.Font.GothamBold
     author.TextSize = 12*SCALE
