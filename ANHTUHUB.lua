@@ -264,7 +264,7 @@ _G.InvisStealAngle = Config.InvisStealAngle
 _G.SinkSliderValue = Config.SinkSliderValue
 _G.AutoRecoverLagback = Config.AutoRecoverLagback
 _G.AutoInvisDuringSteal = Config.AutoInvisDuringSteal
-    _G.INVISIBLE_STEAL_KEY = Enum.KeyCode.I
+    _G.INVISIBLE_STEAL_KEY = SafeKey.I
 _G.invisibleStealEnabled = false
 _G.RecoveryInProgress = false
 
@@ -828,7 +828,7 @@ local function setInfiniteJump(enabled)
 
     Connections.infiniteJumpConnection = RunService.Heartbeat:Connect(function()
     infiniteJumpConnection = Connections.infiniteJumpConnection
-        if not UserInputService:IsKeyDown(Enum.KeyCode.Space) then return end
+        if not UserInputService:IsKeyDown(SafeKey.Space) then return end
         local now = tick()
         if now - JumpData.lastJumpTime < 0.1 then return end
         local char = LocalPlayer.Character
@@ -4035,8 +4035,8 @@ end)
 UserInputService.InputBegan:Connect(function(input, processed)
     if processed then return end
     
-   local tpKey = Enum.KeyCode.I
-    local cloneKey = Enum.KeyCode.F
+   local tpKey = SafeKey.I
+    local cloneKey = SafeKey.F
 
     if input.KeyCode == tpKey then
         runAutoSnipe()
@@ -4046,7 +4046,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         instantClone()
     end
     
-    if input.KeyCode == (Enum.KeyCode[Config.TpSettings.CarpetSpeedKey] or Enum.KeyCode.Q) then
+    if input.KeyCode == (SafeKey[Config.TpSettings.CarpetSpeedKey] or SafeKey.Q) then
         carpetSpeedEnabled = not carpetSpeedEnabled
         setCarpetSpeed(carpetSpeedEnabled)
         if _carpetStatusLabel then
@@ -4056,17 +4056,17 @@ UserInputService.InputBegan:Connect(function(input, processed)
         ShowNotification("CARPET SPEED", carpetSpeedEnabled and ("ON  |  "..Config.TpSettings.Tool.."  |  140") or "OFF")
     end
 
-    if input.KeyCode == (Enum.KeyCode[Config.StealSpeedKey] or Enum.KeyCode.Z) then
+    if input.KeyCode == (SafeKey[Config.StealSpeedKey] or SafeKey.Z) then
         if SharedState.StealSpeedToggleFunc then
             SharedState.StealSpeedToggleFunc()
         end
     end
 
-    if input.KeyCode == (Enum.KeyCode[Config.ResetKey] or Enum.KeyCode.X) then
+    if input.KeyCode == (SafeKey[Config.ResetKey] or SafeKey.X) then
         executeReset()
     end
     
-    if input.KeyCode == (Enum.KeyCode[Config.RagdollSelfKey] or Enum.KeyCode.R) then
+    if input.KeyCode == (SafeKey[Config.RagdollSelfKey] or SafeKey.R) then
         task.spawn(function()
             if _G.runAdminCommand then
                 if _G.runAdminCommand(LocalPlayer, "ragdoll") then
@@ -5272,13 +5272,13 @@ end
 
 if not IS_MOBILE then
     UserInputService.InputBegan:Connect(function(input, gp)
-        if input.KeyCode == (Enum.KeyCode[Config.MenuKey] or Enum.KeyCode.LeftControl) then
+        if input.KeyCode == (SafeKey[Config.MenuKey] or SafeKey.LeftControl) then
             settingsGui.Enabled = not settingsGui.Enabled
         end
-        if Config.KickKey ~= "" and input.KeyCode == Enum.KeyCode[Config.KickKey] then
+        if Config.KickKey ~= "" and input.KeyCode == SafeKey[Config.KickKey] then
             kickPlayer()
         end
-        if Config.RagdollSelfKey ~= "" and input.KeyCode == Enum.KeyCode[Config.RagdollSelfKey] then
+        if Config.RagdollSelfKey ~= "" and input.KeyCode == SafeKey[Config.RagdollSelfKey] then
             if not isOnCooldown("ragdoll") then
                 if runAdminCommand(LocalPlayer, "ragdoll") then
                     activeCooldowns["ragdoll"] = tick()
@@ -5289,19 +5289,19 @@ if not IS_MOBILE then
                 ShowNotification("RAGDOLL SELF", "Ragdoll on cooldown")
             end
         end
-        if Config.ProximityAPKeybind and input.KeyCode == Enum.KeyCode[Config.ProximityAPKeybind] then
+        if Config.ProximityAPKeybind and input.KeyCode == SafeKey[Config.ProximityAPKeybind] then
             ProximityAPActive = not ProximityAPActive
             if SharedState.ProximityAPButton then
                 updateProximityAPButton()
             end
             ShowNotification("PROXIMITY AP", ProximityAPActive and "ENABLED" or "DISABLED")
         end
-        if input.KeyCode == (Enum.KeyCode[Config.ClickToAPKeybind] or Enum.KeyCode.L) then
+        if input.KeyCode == (SafeKey[Config.ClickToAPKeybind] or SafeKey.L) then
             Config.ClickToAP = not Config.ClickToAP
             SaveConfig()
             ShowNotification("CLICK TO AP", Config.ClickToAP and "ENABLED" or "DISABLED")
         end
-        if Config.JobJoinerKey and input.KeyCode == Enum.KeyCode[Config.JobJoinerKey] then
+        if Config.JobJoinerKey and input.KeyCode == SafeKey[Config.JobJoinerKey] then
             local joinerGui = PlayerGui:FindFirstChild("XiJobJoiner")
             if joinerGui then
                 Config.ShowJobJoiner = not Config.ShowJobJoiner
@@ -6364,7 +6364,7 @@ task.spawn(function()
 
 	UserInputService.InputBegan:Connect(function(input)
 		if UserInputService:GetFocusedTextBox() then return end
-		if input.KeyCode == (_G.INVISIBLE_STEAL_KEY or Enum.KeyCode.V) then
+		if input.KeyCode == (_G.INVISIBLE_STEAL_KEY or SafeKey.V) then
 			pcall(_G.toggleInvisibleSteal)
 			if _G.updateMovementPanelInvisVisual then pcall(_G.updateMovementPanelInvisVisual, _G.invisibleStealEnabled or false) end
 			if updateVisualState then updateVisualState(_G.invisibleStealEnabled or false) end
@@ -7705,7 +7705,7 @@ task.spawn(function()
     if not IS_MOBILE then
         UserInputService.InputBegan:Connect(function(input, processed)
             if processed then return end
-            if input.KeyCode == Enum.KeyCode.P and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+            if input.KeyCode == SafeKey.P and UserInputService:IsKeyDown(SafeKey.LeftControl) then
                 priorityGui.Enabled = not priorityGui.Enabled
             end
         end)
