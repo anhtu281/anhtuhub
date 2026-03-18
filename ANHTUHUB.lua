@@ -4035,7 +4035,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
     if processed then return end
     
    local tpKey = Enum.KeyCode.I
-    local cloneKey = Enum.KeyCode.f
+    local cloneKey = Enum.KeyCode.F
 
     if input.KeyCode == tpKey then
         runAutoSnipe()
