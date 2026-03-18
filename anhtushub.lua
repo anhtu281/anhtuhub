@@ -1,4 +1,40 @@
+repeat task.wait() until game:IsLoaded()
+local lp = game:GetService("Players").LocalPlayer
+local exec = getexecutorname(); print(exec); if exec ~= "Synapse Z" then lp:Kick("Desync only  works with Synapse Z") return end
 
+local hooked = false
+lp:SetAttribute("Stealing", lp:GetAttribute("Stealing") or false)
+
+local function send(packet)
+    if packet.PacketId == 0x1B then
+        local b = packet.AsBuffer
+        buffer.writeu32(b,1,0xFFFFFFFF)
+        buffer.writeu32(b,5,0xFFFFFFFF)
+        buffer.writeu32(b,9,0xFFFFFFFF)
+        packet:SetData(b)
+    end
+end
+
+local function recv(packet)
+    if packet.PacketId == 0x1B or packet.PacketId == 0x86 then
+        packet:Drop()
+    end
+end
+
+local function update()
+    if lp:GetAttribute("Stealing") and not hooked then
+        raknet.add_send_hook(send)
+        raknet.add_recv_hook(recv)
+        hooked = true
+    elseif hooked then
+        raknet.remove_send_hook(send)
+        raknet.remove_recv_hook(recv)
+        hooked = false
+    end
+end
+
+lp:GetAttributeChangedSignal("Stealing"):Connect(update)
+update()
 if not game:IsLoaded() then game.Loaded:Wait() end
 pcall(function() game:GetService("Players").RespawnTime = 0 end)
 local privateBuild = false
