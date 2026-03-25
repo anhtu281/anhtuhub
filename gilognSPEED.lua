@@ -142,12 +142,12 @@ end)
 -- INSTANT HUD - NO LOADING SCREEN
 local playerGui = player:WaitForChild("PlayerGui")
 
-if playerGui:FindFirstChild("BluesSpeed") then
-    playerGui.BluesSpeed:Destroy()
+if playerGui:FindFirstChild("GILOGN") then
+    playerGui.GILOGNSpeed:Destroy()
 end
 
 local gui = Instance.new("ScreenGui")
-gui.Name = "BluesSpeed"
+gui.Name = "GILOGNSpeed"
 gui.ResetOnSpawn = false
 gui.DisplayOrder = 999999
 gui.IgnoreGuiInset = true
@@ -163,7 +163,7 @@ local title = Instance.new("TextLabel", gui)
 title.Size = UDim2.new(0, 180, 0, 25)
 title.Position = UDim2.new(0.5, -90, 0, 18)
 title.BackgroundTransparency = 1
-title.Text = "BLUESSPEED"
+title.Text = "GILOGNSPEED"
 title.Font = Enum.Font.GothamBold
 title.TextSize = 16
 title.TextColor3 = Color3.fromRGB(100, 150, 255)
@@ -242,7 +242,7 @@ end)
 task.spawn(function()
     while task.wait(0.15) do
         for _, g in pairs(playerGui:GetChildren()) do
-            if g:IsA("ScreenGui") and g.Name ~= "BluesSpeed" then
+            if g:IsA("ScreenGui") and g.Name ~= "GILOGNSpeed" then
                 local n = g.Name:lower()
                 if n:match("load") or n:match("intro") or n:match("welcome") then
                     pcall(function() g:Destroy() end)
