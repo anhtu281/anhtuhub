@@ -287,7 +287,7 @@ task.spawn(function()
     end
 end)
 
-log("⚡ BLUESSPEED INSTANT - Ready!")
+log("⚡ GILOGNSPEED INSTANT - Ready!")
 log("⚡ Load time: <0.1s")
 
 -- AUTO EXEC SAVE
