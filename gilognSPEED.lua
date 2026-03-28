@@ -101,13 +101,13 @@ local function optimizeLogs()
     end
     
     if rconsoleinfo then
-        rconsoleinfo("⚡ COOPSSPEED - INSTANT LOG EDITION")
+        rconsoleinfo("⚡ GILOGNSPEED - INSTANT LOG EDITION")
         rconsoleinfo("✓ Console forwarding: INSTANT MODE")
     end
     
     -- Set console to highest priority if available
     if setconsoletitle then
-        setconsoletitle("COOPSSPEED - INSTANT LOGS")
+        setconsoletitle("GILOGNSPEED - INSTANT LOGS")
     end
     
     instantLog("Executor optimization complete", "INFO")
@@ -333,12 +333,12 @@ end)
 local function createCleanLoadingScreen()
     local playerGui = player:WaitForChild("PlayerGui")
     
-    if playerGui:FindFirstChild("CoopsSpeed") then
-        playerGui.CoopsSpeed:Destroy()
+    if playerGui:FindFirstChild("GILOGNSPEED") then
+        playerGui.GILOGNSPEED:Destroy()
     end
     
     local screenGui = Instance.new("ScreenGui")
-    screenGui.Name = "CoopsSpeed"
+    screenGui.Name = "GILOGNSPEED"
     screenGui.ResetOnSpawn = false
     screenGui.DisplayOrder = 999999
     screenGui.IgnoreGuiInset = true
@@ -533,7 +533,7 @@ local function createCleanHUD(screenGui)
     hudText.Size = UDim2.new(0, 220, 0, 30)
     hudText.Position = UDim2.new(0.5, -110, 0, 25)
     hudText.BackgroundTransparency = 1
-    hudText.Text = "COOPSSPEED"
+    hudText.Text = "GILOGNSPEED"
     hudText.Font = Enum.Font.GothamBold
     hudText.TextSize = 18
     hudText.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -629,7 +629,7 @@ game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()
 task.spawn(function()
     while task.wait(0.05) do  -- Check 20 times per second
         for _, gui in pairs(player.PlayerGui:GetChildren()) do
-            if gui:IsA("ScreenGui") and gui.Name ~= "CoopsSpeed" then
+            if gui:IsA("ScreenGui") and gui.Name ~= "GILOGNSPEED" then
                 local name = gui.Name:lower()
                 if name:match("loading") or name:match("intro") or name:match("welcome") then
                     pcall(function() gui:Destroy() end)
@@ -696,17 +696,17 @@ end)
 -- ========================
 -- MAIN EXECUTION
 -- ========================
-instantLog("Starting COOPSSPEED initialization...", "INFO")
+instantLog("Starting GILOGNSPEED initialization...", "INFO")
 
 local screenGui = createCleanLoadingScreen()
 
 task.wait(3)
 createCleanHUD(screenGui)
 
-instantLog("COOPSSPEED fully loaded", "INFO")
+instantLog("GILOGNSPEED fully loaded", "INFO")
 instantLog("Press [0] to toggle FPS Boost", "INFO")
 instantLog("Instant log forwarding: ACTIVE", "INFO")
 
-print("⚡ COOPSSPEED - INSTANT LOG EDITION")
+print("⚡ GILOGNSPEED - INSTANT LOG EDITION")
 print("⚡ Console logs are forwarded INSTANTLY")
 print("⚡ Press [0] to toggle FPS Boost mode")
