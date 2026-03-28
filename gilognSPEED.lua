@@ -1,5 +1,5 @@
 --[[
-    COOPS SPEEDJOINER - INSTANT LOG EDITION
+    GiLOGNSPEEDJOINER - INSTANT LOG EDITION
     Maximum speed with instant console log forwarding
 --]]
 
