@@ -380,19 +380,19 @@ local function createCleanLoadingScreen()
         end)
     end
     
-    -- "COOPS" text
-    local coopsText = Instance.new("TextLabel")
-    coopsText.Size = UDim2.new(0, 500, 0, 180)
-    coopsText.Position = UDim2.new(0, -550, 0.5, -90)
-    coopsText.BackgroundTransparency = 1
-    coopsText.Text = "COOPS"
-    coopsText.Font = Enum.Font.GothamBlack
-    coopsText.TextSize = 110
-    coopsText.TextColor3 = Color3.fromRGB(255, 255, 255)
-    coopsText.TextStrokeTransparency = 0.7
-    coopsText.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
-    coopsText.TextTransparency = 0
-    coopsText.Parent = container
+    -- "GILOGN" text
+    local GILOGNText = Instance.new("TextLabel")
+   GILOGNText.Size = UDim2.new(0, 500, 0, 180)
+    GILOGNText.Position = UDim2.new(0, -550, 0.5, -90)
+    GILOGNText.BackgroundTransparency = 1
+    GILOGNText.Text = "GILOGN"
+    GILOGNText.Font = Enum.Font.GothamBlack
+    GILOGNText.TextSize = 110
+    GILOGNText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    GILOGNText.TextStrokeTransparency = 0.7
+    GILOGNText.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    GILOGNText.TextTransparency = 0
+    GILOGNText.Parent = container
     
     -- "SPEED" text
     local speedText = Instance.new("TextLabel")
@@ -479,7 +479,7 @@ local function createCleanLoadingScreen()
         task.wait(2)
         task.wait(0.05)
         
-        TweenService:Create(coopsText, TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out),
+        TweenService:Create(GILOGNText, TweenInfo.new(0.3, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out),
             {Position = UDim2.new(0.5, -480, 0.5, -90)}):Play()
         
         task.wait(0.05)
@@ -496,7 +496,7 @@ local function createCleanLoadingScreen()
         
         task.wait(0.35)
         
-        TweenService:Create(coopsText, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.In),
+        TweenService:Create(GILOGNText, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.In),
             {Position = UDim2.new(0, -600, 0.5, -90), TextTransparency = 1}):Play()
         
         TweenService:Create(speedText, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.In),
